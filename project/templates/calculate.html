@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Profitability
+{% endblock %}
+
+{% block main %}
+    <form action="/profitability" method="post">
+        <div class="dropdown">
+            <select name="gpu">
+                    <option value="custom">Custom</option>
+                {% for gpu in gpus %}
+                    <option value="{{ gpu.card }}">{{ gpu.card }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <br>
+        <div class="panel panel-default">
+            <label for="MH">Hashrate (MH)</label><br>
+            <div><input autocomplete="off" class="form-control" name="MH" value='{{ hr }}' placeholder="Leave Blank if not Custom" type="number"step="any"></div>
+            <br><label for="MH">Power (W)</label><br>
+            <div class="panel-footer"><input autocomplete="off" class="form-control" name="pow" value='{{ p }}' placeholder="Leave Blank if not Custom" type="number"step="any"></div>
+            <br><label for="MH">Hardware Cost ($)</label><br>
+            <div class="panel-footer"><input autocomplete="off" class="form-control" name="hcost" value='{{ hcost }}' placeholder="Default $0" type="number"step="any"></div>
+            <br><label for="MH">Electric Cost ($)</label><br>
+            <div class="panel-footer"><input autocomplete="off" class="form-control" name="ecost" value='{{ ecost }}' placeholder="Default $0.1" type="number"step="any"></div>
+        </div>
+        <br>
+        <button class="btn btn-primary" type="submit">Calculate</button>
+        {% if quote != 0 and stats == 0 %}
+            <h1>Revenue: {{ quote.revenue }}</h1> <br>
+            <h1>After Elec: {{ quote.profit }}</h1> <br>
+            <h1>Breakeven in {{ breakeven }} days</h1>
+        {% endif %}
+        {% if stats != 0 %}
+            <h1>Hashrate: {{ stats[0]['hash'] }}MH</h1>
+            <h1>At Settings: {{ stats[0]['core'] }} MHz Core, {{ stats[0]['mem'] }} MHz Memory Offset, at {{ stats[0]['pow'] }}W</h1><br>
+            <h1>Revenue: {{ quote.revenue }}</h1> <br>
+            <h1>After Elec: {{ quote.profit }}</h1> <br>
+            <h1>Breakeven in {{ breakeven }} days</h1>
+        {% endif %}
+    </form>
+{% endblock %}

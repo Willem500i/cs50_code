@@ -1,0 +1,58 @@
+body {
+    background-color: #000;
+    color: #98fb98;
+    text-align: center;
+    font-size: 32px;
+}
+
+links {
+    color: #0000ff;
+}
+
+titles {
+    color: #ff0000;
+    font-size: 120px;
+}
+
+outputs {
+    font-size: 32px;
+}
+
+display {
+    text-align: right;
+    font-size: 50px;
+}
+
+.number {
+  background-color: #a0a0a0; /* Light grey */
+  border: none;
+  color: white;
+  padding: 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 50px;
+  transition-duration: 0.4s;
+}
+
+.operation {
+  background-color: #ff0000; /* Red */
+  border: none;
+  color: white;
+  padding: 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 50px;
+  transition-duration: 0.4s;
+}
+
+.operation:hover {
+  background-color: #ffffff;
+  color: black;
+}
+
+.number:hover {
+  background-color: #ffffff;
+  color: black;
+}

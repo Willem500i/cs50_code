@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+        <!-- Loop through stocks and print them all-->
+        {% for holding in holdings %}
+            <tr>
+                <td>{{ holding.ticker }}</td>
+                <td>{{ lookup(holding.ticker)['name'] }}</td>
+                <td>{{ holding.amount }}</td>
+                <td>{{ lookup(holding.ticker)['price'] | usd}}</td>
+                <td>{{ (holding.amount * lookup(holding.ticker)['price']) | usd }}</td>
+            </tr>
+        {% endfor %}
+        <tr>
+                <td>CASH</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ cash | usd}}</td>
+        </tr>
+        <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th>{{ total | usd }}</th>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

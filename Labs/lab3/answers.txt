@@ -1,0 +1,11 @@
+sort1 uses: bubble sort
+
+How do you know?: Slowest at sorting random, slowest at reversed, tied with 2 for sorted
+
+sort2 uses: merge sort
+
+How do you know?: Fastest at sorting random, fastest at sorting reversed, tied with 1 for sorted
+
+sort3 uses: selection sort
+
+How do you know?: 2nd Fastest at sorting random, 2nd fastest at sorting reversed, slowest at  sorted

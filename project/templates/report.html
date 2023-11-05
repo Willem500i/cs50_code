@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Report
+{% endblock %}
+
+{% block main %}
+    <form action="/report" method="post">
+        <div class="dropdown">
+            <select name="gpu">
+                {% for gpu in gpus %}
+                    <option value="{{ gpu.card }}">{{ gpu.card }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <br>
+        <div class="form-group">
+            <input required autocomplete="off" autofocus class="form-control" name="core" placeholder="Core Clock" type="number"step="any">
+            <input required autocomplete="off" autofocus class="form-control" name="mem" placeholder="Memory Offset" type="number"step="any">
+            <input required autocomplete="off" autofocus class="form-control" name="pow" placeholder="Power (Watts)" type="number"step="any">
+            <input required autocomplete="off" autofocus class="form-control" name="model" placeholder="Maker/Model" type="text">
+            <input required autocomplete="off" autofocus class="form-control" name="miner" placeholder="Miner" type="text">
+            <input required autocomplete="off" autofocus class="form-control" name="MH" placeholder="MH/s Achieved" type="number"step="any">
+        </div>
+        <button class="btn btn-primary" type="submit">Report</button>
+    </form>
+{% endblock %}
